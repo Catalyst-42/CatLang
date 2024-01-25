@@ -1,0 +1,71 @@
+% You cat set here coloring from C# or Lisp
+% to improve a bit code readibility
+
+% Output text to console
+(out "Hello, world!" . "from CatLang")  % Dot means newline
+
+% Variables
+(= int 10)
+(= float 99.47)
+(= str "Hello, world")
+(= bool T)  % T means True and F means False
+
+% Let's output this variables
+(out 
+  "int = " int .
+  "float = " float .
+  "str = " str .
+  "bool = " bool
+)
+
+% Operations
+(out (+ 1 1))
+(out (- 0 4))  % Way to create negative numbers
+(out (* 4.5 2))
+(out (/ 42 144))
+(out (^ 2 4))
+
+(out (! F))  % Negation of False is True
+
+(out (> 1 0))
+(out (<= 1.5 3))
+(out (!= 1 7))
+(out (== 3.0 3))
+
+% Statements
+(if (!= 3 4) (
+  (out "Well, 3 it's not equal 4")
+))
+
+(if (!= (+ 0.1 0.2) 0.3) (
+  (out 
+    "Wait... what? " .
+    "(" (+ 0.1 0.2) ")"
+  )
+))
+
+(= i 5)
+(while (>= i 0) (
+  (out i "...")
+  (-= i 1)
+))
+
+% Functions
+(def say_hi () (
+  (out "hi")
+))
+
+(say_hi)  % Execute
+
+(def fact (n) (
+  (= f 1)
+  (while (> n 1) (
+    (*= f n)
+    (-= n 1)
+  ))
+
+  (ret f)  % Return f
+))
+
+% 5! = 1 * 2 * 3 * 4 * 5
+(out "5! = " (fact 5))
